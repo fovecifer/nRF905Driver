@@ -13,10 +13,10 @@ int DR = 3;
 
 void nRF905_init(){
     if (wiringPiSetup () == -1)
-    pinMode(0, OUTPUT);
-    pinMode(1, OUTPUT);
-    pinMode(2, OUTPUT);
-    pinMode(3, INPUT);
+    pinMode(TX_EN, OUTPUT);
+    pinMode(TRX_CE, OUTPUT);
+    pinMode(PWR_UP, OUTPUT);
+    pinMode(DR, INPUT);
 
     uint8_t RFConf[11]=
     {
@@ -30,9 +30,9 @@ void nRF905_init(){
     };
 
     //Init nRF905
-    pinMode(3, OUTPUT);
+    pinMode(DR, OUTPUT);
     digitalWrite(DR, 0);
-    pinMode(3, INPUT);
+    pinMode(DR, INPUT);
     digitalWrite(PWR_UP, 1);
     digitalWrite(TRX_CE, 0);
     digitalWrite(TX_EN, 0);
